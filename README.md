@@ -25,39 +25,40 @@ The final result is a real-time online endpoint that predicts whether an MRI ima
 📁 Repository Structure
 lab5/
 ├── src/
-│   ├── extract_features.py          # Silver-layer feature extraction logic
-│   ├── feature_retrieval.py         # (Would retrieve from Feature Store — limited in QC region)
-│   ├── train_model.py               # Model training script (Gold-layer)
-│   └── score.py                     # Online inference scoring script
+│   ├── extract_features.py      # Silver-layer feature extraction logic
+│   ├── feature_retrieval.py     # (Would retrieve from Feature Store — limited in QC region)
+│   ├── train_model.py           # Model training script (Gold-layer)
+│   └── score.py                 # Online inference scoring script
 │
 ├── components/
-│   ├── extract_features.yml         # Azure ML component: Silver feature extraction
-│   ├── feature_retrieval.yml        # Azure ML component: Feature Store retrieval (not used due to region)
-│   └── train_model.yml              # Azure ML component: model training
+│   ├── extract_features.yml     # Azure ML component: Silver feature extraction
+│   ├── feature_retrieval.yml    # Azure ML component: Feature Store retrieval (not used due to region)
+│   └── train_model.yml          # Azure ML component: model training
 │
 ├── featurestore/
-│   ├── tumor_entity.yml             # Entity definition (image_id) — *cannot be registered in Qatar Central*
-│   └── tumor_featureset.yml         # Feature set definition — *not materialized due to region limitation*
+│   ├── tumor_entity.yml         # Entity definition (image_id) — cannot be registered in Qatar Central
+│   └── tumor_featureset.yml     # Feature set definition — not materialized due to region limitation
 │
 ├── pipelines/
-│   └── pipeline_job.py              # Orchestrates the full Azure ML pipeline
+│   └── pipeline_job.py          # Orchestrates the full Azure ML pipeline
 │
 ├── env/
-│   └── conda.yml                    # Environment definition for compute jobs
+│   └── conda.yml                # Environment definition for compute jobs
 │
 ├── .github/
 │   └── workflows/
-│       └── aml_pipeline.yml         # CI/CD workflow for Azure ML pipeline execution
+│       └── aml_pipeline.yml     # CI/CD workflow for Azure ML pipeline execution
 │
 ├── artifacts/
-│   ├── tumor_features.parquet       # Silver-layer engineered features (from extract_features.py)
-│   ├── train.parquet                # Gold-layer training dataset
-│   └── test.parquet                 # Gold-layer testing dataset
+│   ├── tumor_features.parquet   # Silver-layer engineered features (from extract_features.py)
+│   ├── train.parquet            # Gold-layer training dataset
+│   └── test.parquet             # Gold-layer testing dataset
 │
 ├── scripts/
-│   └── test_endpoint.py             # Script used to call and validate deployed endpoint
+│   └── test_endpoint.py         # Script used to call and validate deployed endpoint
 │
-└── README.md                        # This documentation file
+└── README.md                    # This documentation file
+
 
 
 
