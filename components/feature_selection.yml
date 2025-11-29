@@ -1,0 +1,24 @@
+# components/feature_selection.yml
+name: feature_selection_ga
+display_name: Feature Selection (GA)
+type: command
+
+inputs:
+  train_parquet:
+    type: uri_file
+  test_parquet:
+    type: uri_file
+
+outputs:
+  output_dir:
+    type: uri_folder
+
+environment: azureml:lab5-env:1     # <-- use whatever your conda env name/version is
+
+code: ../src
+
+command: >
+  python feature_selection.py
+  --train_parquet ${{inputs.train_parquet}}
+  --test_parquet ${{inputs.test_parquet}}
+  --output_dir ${{outputs.output_dir}}
