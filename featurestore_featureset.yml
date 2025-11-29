@@ -1,0 +1,12 @@
+name: tumor_features
+version: 1
+type: feature_set
+entity: tumor_image
+source:
+  type: parquet
+  path: azureml://datastores/workspaceblobstore/paths/lab5/silver/tumor_features.parquet
+features:
+  - name: f1
+  - name: f2
+  - name: f3
+  ...
