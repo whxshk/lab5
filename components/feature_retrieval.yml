@@ -1,0 +1,46 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: feature_retrieval
+version: 1
+type: command
+display_name: Feature Retrieval / Train-Test Split
+description: >
+  Reads tumor_features.parquet, optionally selects features, and writes
+  train.parquet and test.parquet.
+
+inputs:
+  features_parquet:
+    type: uri_file
+    description: Parquet file with columns [image_id, label, f1..fN]
+  test_size:
+    type: number
+    default: 0.2
+    description: Fraction of data to use for testing
+  random_state:
+    type: integer
+    default: 42
+
+outputs:
+  train_parquet:
+    type: uri_file
+    description: Output training data parquet
+  test_parquet:
+    type: uri_file
+    description: Output test data parquet
+  selected_features:
+    type: uri_file
+    description: JSON with list of selected feature columns (optional)
+
+code: ../src
+
+environment:
+  conda_file: ../conda.yml
+  image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
+
+command: >-
+  python feature_retrieval.py
+  --input_parquet ${{inputs.features_parquet}}
+  --test_size ${{inputs.test_size}}
+  --random_state ${{inputs.random_state}}
+  --train_output ${{outputs.train_parquet}}
+  --test_output ${{outputs.test_parquet}}
+  --selected_features_output ${{outputs.selected_features}}
