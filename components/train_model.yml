@@ -1,0 +1,44 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: train_model
+version: 1
+type: command
+display_name: Train k-NN Tumor Classifier
+description: >
+  Trains a k-NN classifier on engineered tumor features and logs metrics.
+
+inputs:
+  train_parquet:
+    type: uri_file
+    description: Training dataset parquet (features + label)
+  test_parquet:
+    type: uri_file
+    description: Test dataset parquet (features + label)
+  n_neighbors:
+    type: integer
+    default: 5
+  metric:
+    type: string
+    default: "euclidean"
+
+outputs:
+  model_output:
+    type: uri_file
+    description: Trained k-NN model artifact (e.g. npz)
+  metrics_output:
+    type: uri_file
+    description: JSON with evaluation metrics
+
+code: ../src
+
+environment:
+  conda_file: ../conda.yml
+  image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
+
+command: >-
+  python train_model.py
+  --train_path ${{inputs.train_parquet}}
+  --test_path ${{inputs.test_parquet}}
+  --n_neighbors ${{inputs.n_neighbors}}
+  --metric ${{inputs.metric}}
+  --model_output ${{outputs.model_output}}
+  --metrics_output ${{outputs.metrics_output}}
