@@ -1,0 +1,17 @@
+{
+  "selected_features": [
+    "correlation_0",
+    "correlation_90",
+    "correlation_45",
+    "mean",
+    "gabor_real",
+    "gaussian",
+    "correlation_135",
+    "homogeneity_45",
+    "homogeneity_135",
+    "entropy"
+  ],
+  "num_features_total": 33,
+  "num_features_selected": 10,
+  "selection_time_seconds": 0.0022580623626708984
+}
