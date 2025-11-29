@@ -1,0 +1,13 @@
+name: tumor-features-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - numpy==1.23.5
+      - pyarrow==14.0.2
+      - scikit-image==0.22.0
+      - azure-ai-ml==1.28.0
+      - azure-storage-blob==12.20.0
