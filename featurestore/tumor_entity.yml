@@ -1,0 +1,10 @@
+# Simple Feature Store entity definition
+name: tumor_image
+version: 1
+type: entity
+description: >
+  Entity that represents a single tumor image, identified by image_id.
+
+keys:
+  - name: image_id
+    type: string
