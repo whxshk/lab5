@@ -1,6 +1,0 @@
-name: tumor_image
-version: 1
-type: entity
-keys:
-  - name: image_id
-    type: string
