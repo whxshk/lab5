@@ -52,6 +52,8 @@ lab5/
 │ └── test_endpoint.py # Script used to call and validate deployed endpoint
 └── README.md # This documentation file
 
+<img width="687" height="594" alt="image" src="https://github.com/user-attachments/assets/93acfa0f-68dd-4fe7-b558-982d89887e43" />
+
 text
 ---
 
