@@ -1,0 +1,44 @@
+# Feature Store feature set definition for tumor image features
+name: tumor_features
+version: 1
+type: feature_set
+description: >
+  Engineered features (texture, filters, GLCM) computed from raw tumor images.
+
+entity: tumor_image
+
+source:
+  type: parquet
+  # This should match where you uploaded tumor_features.parquet in the Silver layer
+  path: azureml://datastores/workspaceblobstore/paths/lab5/silver/tumor_features.parquet
+
+# Only feature columns here – no label, no image_id
+features:
+  - name: mean
+    type: number
+  - name: std
+    type: number
+  - name: sobel
+    type: number
+  - name: prewitt
+    type: number
+  - name: gaussian
+    type: number
+  - name: entropy
+    type: number
+  - name: contrast_0
+    type: number
+  - name: contrast_45
+    type: number
+  - name: contrast_90
+    type: number
+  - name: contrast_135
+    type: number
+  - name: homogeneity_0
+    type: number
+  - name: homogeneity_45
+    type: number
+  - name: energy_0
+    type: number
+  - name: energy_45
+    type: number
